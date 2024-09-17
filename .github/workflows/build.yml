@@ -25,13 +25,6 @@ jobs:
             target: s390x
           - runner: ubuntu-latest
             target: ppc64le
-        python-version: [
-          "3.9",
-          "3.10",
-          "3.11",
-          "3.12",
-          "3.x",
-        ]
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
@@ -48,7 +41,7 @@ jobs:
             libfontconfig1-dev
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.x
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
@@ -75,13 +68,6 @@ jobs:
             target: aarch64
           - runner: ubuntu-latest
             target: armv7
-        python-version: [
-          "3.9",
-          "3.10",
-          "3.11",
-          "3.12",
-          "3.x",
-        ]
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
@@ -98,7 +84,7 @@ jobs:
             libfontconfig1-dev
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.x
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
@@ -121,18 +107,11 @@ jobs:
             target: x64
           - runner: windows-latest
             target: x86
-        python-version: [
-          "3.9",
-          "3.10",
-          "3.11",
-          "3.12",
-          "3.x",
-        ]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.x
           architecture: ${{ matrix.platform.target }}
       - name: Build wheels
         uses: PyO3/maturin-action@v1
@@ -155,18 +134,11 @@ jobs:
             target: x86_64
           - runner: macos-14
             target: aarch64
-        python-version: [
-          "3.9",
-          "3.10",
-          "3.11",
-          "3.12",
-          "3.x",
-        ]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.x
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
