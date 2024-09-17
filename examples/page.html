@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+</head>
+
+<body>
+    <b>Loading...</b>
+    <script>
+        Telegram.WebApp.ready();
+
+        var initData = Telegram.WebApp.initData || '';
+        var initDataUnsafe = Telegram.WebApp.initDataUnsafe || {};
+
+        if (initDataUnsafe.query_id && initData) {
+            fetch('/check_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ auth_data: initData })
+            })
+                .then(response => response.text())
+                .then(result => {
+                    document.documentElement.innerHTML = result;
+                })
+                .catch(error => {
+                    document.documentElement.innerHTML = '<b>Error</b>';
+                });
+        }
+        else {
+            document.documentElement.innerHTML = '<b>Error</b>';
+        }
+
+    </script>
+</body>
+
+</html>
