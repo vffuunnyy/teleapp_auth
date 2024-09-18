@@ -69,6 +69,9 @@ jobs:
         with:
           path: dist
       - name: List dist contents
+        with:
+            inputs: >-
+              ./dist/*/*.whl
         run: ls -la dist
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
