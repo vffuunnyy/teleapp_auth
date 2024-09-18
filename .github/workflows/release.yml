@@ -68,13 +68,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: dist
-          inputs: >-
-            ./dist/*/*.whl
-      - name: List dist contents
-        run: ls -la dist
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
+          inputs: >-
+            ./dist/*/*.whl
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
           repository_url: https://upload.pypi.org/legacy/
