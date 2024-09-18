@@ -58,7 +58,6 @@ jobs:
   publish:
     name: Publish to PyPI
     needs: [build-sdist, build]
-    # if: github.event_name == 'release'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -73,8 +72,8 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-          repository_url: https://upload.pypi.org/legacy/
-          packages_dir: dist/*/
-          verify_metadata: true
-          skip_existing: false
+          repository-url: https://upload.pypi.org/legacy/
+          packages-dir: dist/*/
+          verify-metadata: true
+          skip-existing: false
           verbose: true

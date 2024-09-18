@@ -2,6 +2,7 @@
 name = "teleapp_auth"
 version = "0.1.0"
 edition = "2021"
+description = "Telegram authentication library"
 
 [lib]
 name = "teleapp_auth"
