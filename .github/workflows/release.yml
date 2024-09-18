@@ -71,12 +71,10 @@ jobs:
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          inputs: >-
-            ./dist/*/*.whl
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
           repository_url: https://upload.pypi.org/legacy/
-          packages_dir: dist
+          packages_dir: dist/*/
           verify_metadata: true
           skip_existing: false
           verbose: true
