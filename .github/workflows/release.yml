@@ -58,7 +58,7 @@ jobs:
   publish:
     name: Publish to PyPI
     needs: [build-sdist, build]
-    if: github.ref == 'refs/tags'
+    if: github.event_name == 'release'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
