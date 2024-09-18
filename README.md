@@ -1,6 +1,9 @@
-# Telegram WebApp Auth Library
-
+# 🦀🐍 Telegram WebApp Auth Library
 This library is a simple way to authenticate users in your web application using Telegram.
+
+## Example
+
+For a complete example, check out the [teleapp_auth repository](https://github.com/vffuunnyy/teleapp_auth).
 
 ## Installation
 
