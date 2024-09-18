@@ -76,4 +76,3 @@ jobs:
           packages-dir: dist/*/
           verify-metadata: true
           skip-existing: false
-          verbose: true
