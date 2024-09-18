@@ -60,22 +60,13 @@ jobs:
     needs: [build-sdist, build]
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           path: dist
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install twine
-        run: pip install twine
-      - name: Check distribution files
-        run: twine check dist/*
-      - name: Publish to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.pypi_token }}
-        run: twine upload dist/*
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
