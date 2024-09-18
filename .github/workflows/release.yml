@@ -58,7 +58,7 @@ jobs:
   publish:
     name: Publish to PyPI
     needs: [build-sdist, build]
-    if: github.event_name == 'release'
+    # if: github.event_name == 'release'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -68,6 +68,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: dist
+      - name: List dist contents
+        run: ls -la dist
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
