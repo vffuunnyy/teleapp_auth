@@ -46,7 +46,7 @@ jobs:
       - name: Build wheel with maturin
         uses: PyO3/maturin-action@v1
         with:
-          args: build --release --out dist
+          args: --release --out dist --find-interpreter
           rust-toolchain: stable
       - uses: actions/upload-artifact@v4
         with:
