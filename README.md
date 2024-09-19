@@ -3,7 +3,7 @@ This library is a simple way to authenticate users in your web application using
 
 ## Example
 
-For a complete example, check out the [teleapp_auth repository](https://github.com/vffuunnyy/teleapp_auth).
+For a complete example, check out the [Example Bot repository](https://github.com/vffuunnyy/example_teleapp_auth).
 
 ## Installation
 
