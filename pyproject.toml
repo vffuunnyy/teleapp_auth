@@ -22,6 +22,12 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP"
 ]
 
+[project.urls]
+Homepage = "https://github.com/vffuunnyy/teleapp_auth/"
+Documentation = "https://github.com/vffuunnyy/teleapp_auth/"
+Repository = "https://github.com/vffuunnyy/teleapp_auth.git"
+Issues = "https://github.com/vffuunnyy/teleapp_auth/issues"
+
 [build-system]
 requires = ["maturin>=1.4,<2.0"]
 build-backend = "maturin"
