@@ -1,4 +1,4 @@
-use pyo3::prelude::*;
+use pyo3::{prelude::*, types::PyDict};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -85,6 +85,51 @@ impl WebAppInitData {
             self.hash
         )
     }
+
+    pub fn to_dict(&self, py: Python) -> PyResult<Py<PyDict>> {
+        let dict = PyDict::new_bound(py);
+        dict.set_item("query_id", self.query_id.as_ref().map(|x| x.to_object(py)))?;
+        dict.set_item(
+            "user",
+            self.user
+                .as_ref()
+                .map(|x| x.to_dict(py).expect("Unable to convert user to dict")),
+        )?;
+        dict.set_item(
+            "receiver",
+            self.receiver
+                .as_ref()
+                .map(|x| x.to_dict(py).expect("Unable to convert receiver to dict")),
+        )?;
+        dict.set_item(
+            "chat",
+            self.chat
+                .as_ref()
+                .map(|x| x.to_dict(py).expect("Unable to convert chat to dict")),
+        )?;
+        dict.set_item(
+            "chat_type",
+            self.chat_type.as_ref().map(|x| x.to_object(py)),
+        )?;
+        dict.set_item(
+            "chat_instance",
+            self.chat_instance.as_ref().map(|x| x.to_object(py)),
+        )?;
+        dict.set_item(
+            "start_param",
+            self.start_param.as_ref().map(|x| x.to_object(py)),
+        )?;
+        dict.set_item(
+            "can_send_after",
+            self.can_send_after.as_ref().map(|x| x.to_object(py)),
+        )?;
+        dict.set_item(
+            "auth_date",
+            self.auth_date.as_ref().map(|x| x.to_object(py)),
+        )?;
+        dict.set_item("hash", self.hash.to_object(py))?;
+        Ok(dict.into())
+    }
 }
 
 #[pymethods]
@@ -92,11 +137,39 @@ impl WebAppUser {
     fn __repr__(&self) -> String {
         format!("{:?}", self)
     }
+
+    pub fn to_dict(&self, py: Python) -> PyResult<Py<PyDict>> {
+        let dict = PyDict::new_bound(py);
+        dict.set_item("id", self.id.to_object(py))?;
+        dict.set_item("is_bot", self.is_bot.to_object(py))?;
+        dict.set_item("first_name", self.first_name.to_object(py))?;
+        dict.set_item("last_name", self.last_name.to_object(py))?;
+        dict.set_item("username", self.username.to_object(py))?;
+        dict.set_item("language_code", self.language_code.to_object(py))?;
+        dict.set_item("is_premium", self.is_premium.to_object(py))?;
+        dict.set_item(
+            "added_to_attachment_menu",
+            self.added_to_attachment_menu.to_object(py),
+        )?;
+        dict.set_item("allows_write_to_pm", self.allows_write_to_pm.to_object(py))?;
+        dict.set_item("photo_url", self.photo_url.to_object(py))?;
+        Ok(dict.into())
+    }
 }
 
 #[pymethods]
 impl WebAppChat {
     fn __repr__(&self) -> String {
         format!("{:?}", self)
+    }
+
+    pub fn to_dict(&self, py: Python) -> PyResult<Py<PyDict>> {
+        let dict = PyDict::new_bound(py);
+        dict.set_item("id", self.id.to_object(py))?;
+        dict.set_item("type", self.type_.to_object(py))?;
+        dict.set_item("title", self.title.to_object(py))?;
+        dict.set_item("username", self.username.to_object(py))?;
+        dict.set_item("photo_url", self.photo_url.to_object(py))?;
+        Ok(dict.into())
     }
 }

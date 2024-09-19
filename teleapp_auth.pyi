@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Literal
 
 def validate_webapp_data(webapp_data: dict[str, str], secret_key: bytes) -> bool:
     """
@@ -56,6 +56,13 @@ class WebAppUser:
     allows_write_to_pm: Optional[bool]
     photo_url: Optional[str]
 
+    def to_dict(self) -> dict[str, int | str | bool | None | dict]:
+        """
+        Convert the object to a dictionary
+
+        :return: The object as a dictionary
+        """
+
 class WebAppChat:
     """
     This object represents a chat.
@@ -65,7 +72,7 @@ class WebAppChat:
         type_ (str): Type of chat. Can be either "group", "supergroup", or "channel".
         title (str): Title of the chat.
         username (Optional[str]): Optional. Username of the chat.
-        photo_url (Optional[str]): Optional. URL of the chat's photo. Can be in .jpeg or .svg format.
+        photo_url (Optional[str]): Optional. URL of the chat's photo. Can be in .jpeg or .svg format. Only returned for Mini Apps launched from the attachment menu.
     """
 
     id: int
@@ -73,6 +80,13 @@ class WebAppChat:
     title: str
     username: Optional[str]
     photo_url: Optional[str]
+
+    def to_dict(self) -> dict[str, int | str | bool | None | dict]:
+        """
+        Convert the object to a dictionary
+
+        :return: The object as a dictionary
+        """
 
 class WebAppInitData:
     """
@@ -95,11 +109,16 @@ class WebAppInitData:
     user: Optional[WebAppUser]
     receiver: Optional[WebAppUser]
     chat: Optional[WebAppChat]
-    chat_type: Optional[
-        str
-    ]  # Can be "sender", "private", "group", "supergroup", or "channel"
+    chat_type: Optional[Literal["sender", "private", "group", "supergroup", "channel"]]
     chat_instance: Optional[str]
     start_param: Optional[str]  # Value of the startattach parameter
     can_send_after: Optional[int]  # Time in seconds
     auth_date: Optional[int]  # Unix time
     hash: Optional[str]
+
+    def to_dict(self) -> dict[str, int | str | bool | None | dict]:
+        """
+        Convert the object to a dictionary
+
+        :return: The object as a dictionary
+        """

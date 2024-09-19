@@ -3,9 +3,24 @@ name = "teleapp-auth"
 requires-python = ">=3.9.0"
 authors = [{name="vffuunnyy", email="vffuunnyy@gmail.com"}]
 dynamic = ["version"]
-description = "Telegram authentication library"
+description = "🚀 A Rust-based Python package for validating Telegram WebApp authorization."
 license = "MIT"
 readme = "README.md"
+keywords = ["telegram", "webapp", "authentication", "auth", "web", "python", "api", "bot", "security", "miniapp", "teleapp", "teleapp-auth"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Internet :: WWW/HTTP"
+]
 
 [build-system]
 requires = ["maturin>=1.4,<2.0"]
