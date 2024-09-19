@@ -1,6 +1,6 @@
 [package]
 name = "teleapp_auth"
-version = "1.1.0"
+version = "1.0.1"
 edition = "2021"
 description = "🚀 A Rust-based Python package for validating Telegram WebApp authorization."
 
