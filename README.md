@@ -1,4 +1,6 @@
 # 🦀🐍 Telegram WebApp Auth Library
+![PyPI - Downloads](https://img.shields.io/pypi/dm/teleapp-auth) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/teleapp-auth) ![GitHub Release](https://img.shields.io/github/v/release/vffuunnyy/teleapp_auth)
+
 This library is a simple way to authenticate users in your web application using Telegram.
 
 ## Example
